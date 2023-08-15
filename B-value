@@ -1,0 +1,43 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def compute_b_value(mags, mt, interval, perc=[2.5, 97.5], n_reps=None):
+    m = mags[mags >= mt]
+    b = ((np.mean(m) - (mt - interval / 2)) * np.log(10))
+
+    if n_reps is None:
+        return b
+    else:
+        m_bs_reps = np.random.choice(m, size=(n_reps, len(m)), replace=True)
+        m_bs_reps_mean = np.mean(m_bs_reps, axis=1)
+        b_bs_reps = ((m_bs_reps_mean - (mt - interval / 2)) * np.log(10))
+        conf_int = np.percentile(b_bs_reps, perc)
+        return b, conf_int
+
+# Load data from CSV file
+data = pd.read_csv('cat.csv')
+
+# Extract necessary columns
+mags = data['MAGNITUDE']
+mt = 4.0  # Adjust this value as needed
+interval = 0.1
+n_reps = 10000
+
+# Compute b-value and confidence interval
+b_value, conf_interval = compute_b_value(mags, mt, interval, n_reps=n_reps)
+
+# Print results
+print(f"Estimated b-value: {b_value}")
+print(f"Confidence Interval: {conf_interval}")
+
+# Plot histogram of bootstrap b-values
+plt.hist(b_value, bins=30, density=True, alpha=0.5)
+plt.axvline(b_value, color='red', linestyle='dashed', linewidth=2, label='Estimated b-value')
+plt.axvline(conf_interval[0], color='green', linestyle='dashed', linewidth=2, label='2.5% CI')
+plt.axvline(conf_interval[1], color='green', linestyle='dashed', linewidth=2, label='97.5% CI')
+plt.xlabel('b-value')
+plt.ylabel('Density')
+plt.title('Bootstrap Estimates of b-value')
+plt.legend()
+plt.show()

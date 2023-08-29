@@ -1,0 +1,8 @@
+Location,lat,lon,PGA_std,Date(DD/MM/YYYY),Magnitude,Distance of earthquake epicenter from tunnel,Depth of Earthquake(Km),Earthquake lat,Earthquake lon,Earthquake Id
+Sonapur_Tunnel,25.106,92.361,0.658764,30/12/1984,6,74.37,22.6,24.641,92.891,usp0002ajx
+Sonapur_Tunnel,25.106,92.361,0.588701,06/02/1988,5.9,92.33,33,24.688,91.57,usp0003ct7
+Sonapur_Tunnel,25.106,92.361,0.692805,13/04/1989,5.5,71.98,33,24.472,92.505,usp0003tx3
+Sonapur_Tunnel,25.106,92.361,0.658486,08/05/1997,6,26.09,34.9,24.894,92.25,usp00081x0
+Sonapur_Tunnel,25.106,92.361,0.670715,09/12/2004,5.4,42.75,34.7,24.757,92.539,usp000dabz
+Sonapur_Tunnel,25.106,92.361,0.727565,15/02/2005,5,63.97,35.2,24.55,92.524,usp000dg6k
+Sonapur_Tunnel,25.106,92.361,0.686706,14/08/2023,5.3,18.05,36.6,24.98,92.248,us6000kzvl
